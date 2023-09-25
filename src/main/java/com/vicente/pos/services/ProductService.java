@@ -3,6 +3,7 @@ package com.vicente.pos.services;
 import com.vicente.pos.models.ProductModel;
 import com.vicente.pos.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +18,7 @@ public class ProductService {
     }
 
     public List<ProductModel> getAllProducts() {
-
-        return productRepository.findAll();
+        return productRepository.findAll(Sort.by("created").descending());
     }
 
     public ProductModel getProductById(int id) {
@@ -30,7 +30,6 @@ public class ProductService {
     }
 
     public boolean deleteProductById(int id) {
-
         if (productRepository.existsById(id)) {
 
             productRepository.deleteById(id);

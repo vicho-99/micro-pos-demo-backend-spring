@@ -1,5 +1,6 @@
 package com.vicente.pos.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +26,7 @@ public class ProductModel {
     @Column(updatable = false, insertable = false)
     @JsonFormat(pattern = "dd-MMM-yyyy HH:mm:ss", timezone = "America/Santiago")
     private Timestamp created;
-
+    @JsonProperty("isActive")
     private boolean isActive;
     @Column(nullable = false)
     private String name;
