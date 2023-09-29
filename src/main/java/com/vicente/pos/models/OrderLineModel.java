@@ -28,7 +28,11 @@ public class OrderLineModel {
 
     private OrderModel order;
 
-    private int productId;
+
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private ProductModel product;
 
     private BigDecimal qty;
 
