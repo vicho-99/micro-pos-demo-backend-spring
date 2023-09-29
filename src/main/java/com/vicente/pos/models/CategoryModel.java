@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Getter
@@ -29,5 +30,11 @@ public class CategoryModel {
     private Timestamp created;
     @JsonProperty("isActive")
     private boolean isActive;
+
+    @Column(updatable = false, insertable = false)
+    private BigDecimal totalSalesAmount;
+
+    @Column(updatable = false, insertable = false)
+    private BigDecimal totalSalesQty;
 
 }

@@ -18,7 +18,7 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<CategoryModel> getAllCategorys() {
+    public List<CategoryModel> getAllCategory() {
 
         return categoryRepository.findAll(Sort.by("created").descending());
     }

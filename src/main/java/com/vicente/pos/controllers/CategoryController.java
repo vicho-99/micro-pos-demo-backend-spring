@@ -1,10 +1,8 @@
 package com.vicente.pos.controllers;
 
 import com.vicente.pos.models.CategoryModel;
-import com.vicente.pos.models.ProductModel;
 import com.vicente.pos.models.Response;
 import com.vicente.pos.services.CategoryService;
-import com.vicente.pos.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +19,8 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
     @GetMapping("/")
-    public List<CategoryModel> getAllCategorys() {
-        return categoryService.getAllCategorys();
+    public List<CategoryModel> getAllCategory() {
+        return categoryService.getAllCategory();
     }
     @PostMapping("/")
     public ResponseEntity<Response> createCategory(@RequestBody CategoryModel category){

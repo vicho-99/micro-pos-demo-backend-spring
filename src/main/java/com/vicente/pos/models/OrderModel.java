@@ -27,6 +27,10 @@ public class OrderModel {
     @JsonFormat(pattern = "dd-MMM-yyyy HH:mm:ss", timezone = "America/Santiago")
     private Timestamp created;
 
+    @Column(updatable = false, insertable = false, name = "created")
+    @JsonFormat(pattern = "dd-MMM-yyyy", timezone = "America/Santiago")
+    private Timestamp createdDate;
+
     private int totalItem;
 
     private BigDecimal totalAmount;

@@ -3,7 +3,8 @@ package com.vicente.pos.services;
 import com.vicente.pos.models.OrderLineModel;
 import com.vicente.pos.models.OrderModel;
 import com.vicente.pos.models.ProductModel;
-import com.vicente.pos.repositories.OrdenRepository;
+import com.vicente.pos.repositories.OrderRepository;
+import com.vicente.pos.repositories.OrderRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -15,15 +16,15 @@ import java.util.List;
 @Service
 public class OrderService {
 
-    private final OrdenRepository ordenRepository;
+    private final OrderRepository orderRepository;
     private final OrderLineService orderLineService;
     private final ProductService productService;
 
 
     @Autowired
-    public OrderService(OrdenRepository ordenRepository, OrderLineService orderLineService, ProductService productService) {
+    public OrderService(OrderRepository orderRepository, OrderLineService orderLineService, ProductService productService) {
 
-        this.ordenRepository = ordenRepository;
+        this.orderRepository = orderRepository;
         this.orderLineService = orderLineService;
         this.productService = productService;
     }
@@ -31,7 +32,7 @@ public class OrderService {
 
     public List<OrderModel> getAllOrders() {
 
-        return ordenRepository.findAll(Sort.by("created").descending());
+        return orderRepository.findAll(Sort.by("created").descending());
     }
 
     public  BigDecimal calculateTotal(List<OrderLineModel> orderLine){
@@ -54,7 +55,7 @@ public class OrderService {
         order.setTotalAmount(totalAmount);
         order.setTotalItem(order.getItems().size());
 
-        OrderModel savedOrder = ordenRepository.save(order);
+        OrderModel savedOrder = orderRepository.save(order);
 
         for (int i = 0; i < order.getItems().size() ; i++) {
             OrderLineModel orderLine = order.getItems().get(i);

@@ -27,9 +27,7 @@ public class OrderLineModel {
     @JsonIgnore
 
     private OrderModel order;
-
-
-
+    
     @ManyToOne
     @JoinColumn(name = "product_id")
     private ProductModel product;
